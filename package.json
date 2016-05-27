@@ -1,7 +1,11 @@
 {
   "name": "ykpm",
   "version": "1.0.0",
-  "description": "",
+  "description": "### 说明",
+  "keywords": [
+    "打包调试代理"
+  ],
+  "main": "index.js",
   "bin": {
     "ykpm": "./ykpm"
   },
@@ -14,6 +18,10 @@
     "url": "https://github.com/beliefgp/ykpm/issues"
   },
   "homepage": "https://github.com/beliefgp/ykpm#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beliefgp/ykpm.git"
+  },
   "dependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.9.0",
@@ -36,10 +44,11 @@
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   },
+  "devDependencies": {},
   "ykpm": {
     "build": {
       "buildpath": "./build",
-      "filespath": "./src",
+      "filespath": "./src/",
       "option": {
         "cssExtract": true,
         "cssAutoprefixer": true,
@@ -68,7 +77,9 @@
           "css.tudou.com",
           "portal.zb.youku.com"
         ],
-        "actionExtname": [".action"],
+        "actionExtname": [
+          ".action"
+        ],
         "parser": "(name)_*",
         "mock": {
           "jsonpName": "jsonpcallback",
