@@ -6,7 +6,18 @@ class Live {
 	constructor(liveId = 0) {
 		$.ajax({
 			type: 'get',
-			url: 'http://css.tudou.com/getTestInfo',
+			url: 'http://portal.zb.youku.com/liveportal/getTest1',
+			data: { testId: 1 },
+			dataType: 'jsonp',
+			jsonp: 'callback',
+			success: function (ret) {
+				console.log(ret && ret.data);
+			}
+		});
+		
+		$.ajax({
+			type: 'get',
+			url: 'http://portal.zb.youku.com/liveportal/getTest4.action?ids=387',
 			data: { testId: 1 },
 			dataType: 'jsonp',
 			jsonp: 'jsonpcallback',
@@ -14,7 +25,6 @@ class Live {
 				console.log(ret && ret.data);
 			}
 		});
-
 
 		$.ajax({
 			type: 'get',
