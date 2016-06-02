@@ -18,6 +18,7 @@ npm install ykpm
 
 配置文件默认寻找项目下package.json文件
 
+代理功能中，网络地址匹配支持的通配符使用[wildware-named](https://github.com/Bartozzz/wildcard-named)
 
 ```js
 
@@ -59,8 +60,8 @@ npm install ykpm
 	//调试代理相关配置
     "debug": {
     	"contentBase": "./static/",//静态文件目录，一般放置html
-    	"host": "local.youku.com",//本地代理域名
-    	"port": 3333,//端口
+    	"host": "local.youku.com",//本地服务域名（如果使用代理功能，需把此域名配置在浏览器不代理地址列表）
+    	"port": 3333,//端口（如果使用代理功能，浏览器代理端口需与此配置相同）
     	/*
     	 * 是否开启热更新(保存修改的文件时，页面会自动刷新，无需手动)，默认true
     	 * **提醒：开启热更新并且使用代理的时候，需要把本地代理域名放入浏览器不代理的地址列表中
@@ -68,14 +69,14 @@ npm install ykpm
 		"hot": true,
     	/*
     	 * 代理通配符过滤器
-    	 * 使用[wildware-named](https://github.com/Bartozzz/wildcard-named)
+    	 * 默认配置查看wildware-named
     	*/
     	"proxyFilter": {
 			"jscss": "(js|css)"
 		},
       	/*
-       	 * 代理项配置
-		 * 同域名下，文件、接口直接混写
+       	 * 代理项配置(需要开启浏览器代理，代理到本地：127.0.0.1:3333)
+		 * 同域名下，文件、接口支持混写
       	*/
 		"proxy": {
 			/*
