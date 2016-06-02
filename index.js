@@ -10,7 +10,7 @@ var argv = optimist.argv;
 var [cmd, ...args] = optimist.argv._;
 
 if (['build', 'debug'].indexOf(cmd) < 0) {
-	args.unshift(cmd);
+	cmd && args.unshift(cmd);
 	cmd = 'build';
 }
 
