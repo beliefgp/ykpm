@@ -1,6 +1,6 @@
 {
   "name": "ykpm",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "基于webpak封装的打包工具，集成打包、调试、代理、ajax劫持模拟数据",
   "keywords": [
     "打包",
