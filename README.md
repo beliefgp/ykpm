@@ -10,7 +10,9 @@ npm install ykpm
 
 ### 使用
 
-打包：ykpm build \[filename\]  (配置此filename，会忽略config中的files配置)
+打包：ykpm build               (打包config中的files中的所有入口文件)
+	 ykpm \[filename\]        (此filename，需在config中的files配置，只会打包lib、common及其此文件)
+	 ykpm build \[filename\]  
 
 调试：ykpm debug
 
