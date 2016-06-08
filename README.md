@@ -100,8 +100,14 @@ npm install ykpm
 			 * 
 			 * 
 			 * 代理接口
-			 * 需指明返回数据data,支持mockjs格式
 			 * jsonpName指明jsonp回调函数传参名称，默认jsonpcallback
+			 * 
+			 * 需指明返回数据data：
+			 *   1. 支持mockjs数据格式
+			 *   2. 支持文件路径（如例4），该路径需指向一个文件，并导出一个data属性
+			 * 		2.1 可直接返回ajax需要的值：exports.data = {a:1}，
+			 *      2.2 可为一个function：exports.data = function(req，res){return {a:1}};
+			 *          接收req，res两个http请求参数，return的值作为ajax的返回值
 			*/
 			
 			//例1
@@ -135,13 +141,7 @@ npm install ykpm
 			
 			//例4
 			"http://portal.zb.youku.com/liveportal/getTest1.action": {
-				"data": {
-					"data|1-10": [
-						{
-							"id|+2": 2
-						}
-					]
-				}
+				"data": "./src/test/mock.js"
 			},
 			
 			//例5

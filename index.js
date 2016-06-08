@@ -26,7 +26,7 @@ if (config === null) {
 }
 
 if (cmd === 'build' && args.length > 0) {
-	config.ykpm.build.files = args;
+	config.ykpm.build.shell_files = args;
 }
 
 var Task = require(__dirname + '/lib/' + cmd);

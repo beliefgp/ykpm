@@ -1,6 +1,6 @@
 {
 	"name": "ykpm",
-	"version": "2.2.5",
+	"version": "2.2.6",
 	"description": "基于webpak封装的打包工具，集成打包、调试、代理、ajax劫持模拟数据",
 	"keywords": [
 		"打包",
@@ -116,13 +116,7 @@
 				},
 				"http://portal.zb.youku.com/liveportal": {
 					"path": "getTest1.action",
-					"data": {
-						"data|1-10": [
-							{
-								"id|+2": 2
-							}
-						]
-					}
+					"data": "./src/test/mock.js"
 				}
 			}
 		}
