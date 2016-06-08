@@ -25,36 +25,51 @@ npm install ykpm
 "ykpm": {
 	//打包相关配置
     "build": {
-		"buildpath": "./build", //打包文件输出目录
-		"filespath": "./src", //开发文件目录，决定了所有组件的根路径
+		"buildPath": "./build", //打包文件输出目录
+		"filesPath": "./src", //开发文件目录，决定了所有组件的根路径
+		"publicPath": "/dist/src/", //线上路径引用地址，也可是http地址(一般会在图片、字体打包时加入该路径)
 		"option": {
 			"cssExtract": true, //css文件抽离单独打包，默认false
 			"cssAutoprefixer": true, //自动添加css3属性前缀，默认true
 			"fileLimit": 10000 //文件压缩，小于10k的文件直接转换为base64位data数据，不在生成物理文件，默认false
+			"jsUglify": true, //js文件压缩，默认true
+			"commonExtractToLib": false //提取所有入口文件公共部分至lib基础库中，默认false
 		},
 		//外部组件调用,如在html直接引用react组件，不经过打包，配置此项，内部使用：import react from 'react'
+		//参考http://webpack.github.io/docs/configuration.html#externals
 		"external": {
 			"react": 'React'
 		}, 
 		//引用简化,内部可使用：import react from 'react',而不用使用完整路径：import react from './js/lib/react.min.js'
 		"alias": {
+			"jquery": "lib/jquery.min.js",
 			"react": 'lib/react.min.js'
 		},
 		//全局变量,配合alias使用，key为项目中要使用的变量，value为要使用的组件，对应alias中的key
 		//内部可直接使用 $、react变量，而无需再用导入：import $ from 'jquery'
-		"global": { 
+		"global": {
 			"$": "jquery",
 			"react": "react"
 		},
-		//需要单独打包出的公共组件，filename允许重置lib文件路径名称，默认在buildpath下lib.js
-		//其余为lib文件所包含的公共组件，key为alias简称，value为路径
-		"lib": {
-			"filename": "js/lib.js",
-			"jquery": "lib/jquery.min.js"
-		},
-		//要打包的主入口文件
+		//lib文件路径名称，默认在buildpath下lib.js
+		"libFileName": "js/lib.js",
+		//需要单独打包出的公共基础库：1.可使用alias中简称 2.可直接使用路径(一般是模块挂载到window上的，否则会无法import到)
+		"lib": [
+			"jquery",
+			"lib/test.min.js"
+		],
+		/**
+		 * 要打包的主入口文件
+		 * 
+		 * 注意：适应某些特殊需要，类似g.js全局业务逻辑,需要标识“common”，入口文件涉及到g.js中重复module的，将不在重复打包
+		 *      不涉及g.js的，需要标识false
+		 */
 		"files": [
-			"js/live.js"
+			"js/live.js",
+
+			[{"js/g.js": ["js/g/nav.js", "js/g/top.js"]}, "common"],
+			["js/g.js", "common"],
+			["js/no_g_page.js", false]
 		]
     },
 	//调试代理相关配置
@@ -107,7 +122,7 @@ npm install ykpm
 					"target": "[path]/[file].[extname]"
 				},
 				{
-					"action": "/getJsVersion.action",
+					"path": "/getJsVersion.action",
 					"data": {
 						"data|1-10": [
 							{
@@ -131,7 +146,7 @@ npm install ykpm
 			
 			//例5
 			"http://portal.zb.youku.com/liveportal": {
-				"action": "getTest2.action",
+				"path": "getTest2.action",
 				"data": {
 					"data|1-10": [
 						{
@@ -145,7 +160,7 @@ npm install ykpm
 			"http://portal.zb.youku.com/liveportal": [
 				{
 					"jsonpName": "callback",
-					"action": "getTest3",
+					"path": "getTest3",
 					"data": {
 						"data|1-10": [
 							{
@@ -156,7 +171,7 @@ npm install ykpm
 				},
 				{
 					"jsonpName": "jsonpcallback",
-					"action": "getTest4",
+					"path": "getTest4",
 					"data": {
 						"data|1-10": [
 							{

@@ -3,3 +3,5 @@ src
 build
 static
 .vscode
+typings
+jsconfig.json
