@@ -8,13 +8,19 @@
 
 npm install ykpm
 
-### 使用
+### 构建
+```bash
+	ykpm build             # 打包config中的files中的所有入口文件
 
-打包：ykpm build               (打包config中的files中的所有入口文件)
-	 ykpm \[filename\]        (此filename，需在config中的files配置，只会打包lib、common及其此文件)
-	 ykpm build \[filename\]  
+	ykpm [filename]        # 此filename，需在config中的files配置，只会打包lib、common及其此文件
 
-调试：ykpm debug
+	ykpm build [filename]
+```
+
+### 调试
+```bash
+	ykpm debug
+```
 
 ### 配置说明
 
@@ -37,8 +43,10 @@ npm install ykpm
 			"jsUglify": true, //js文件压缩，默认true
 			"commonExtractToLib": false //提取所有入口文件公共部分至lib基础库中，默认false
 		},
-		//外部组件调用,如在html直接引用react组件，不经过打包，配置此项，内部使用：import react from 'react'
-		//参考http://webpack.github.io/docs/configuration.html#externals
+		/**
+		 * 外部组件调用,如在html直接引用react组件，不经过打包，配置此项，内部使用：import react from 'react'
+		 * 参考http://webpack.github.io/docs/configuration.html#externals
+		*/
 		"external": {
 			"react": 'React'
 		}, 
@@ -47,8 +55,10 @@ npm install ykpm
 			"jquery": "lib/jquery.min.js",
 			"react": 'lib/react.min.js'
 		},
-		//全局变量,配合alias使用，key为项目中要使用的变量，value为要使用的组件，对应alias中的key
-		//内部可直接使用 $、react变量，而无需再用导入：import $ from 'jquery'
+		/**
+		 * 全局变量,配合alias使用，key为项目中要使用的变量，value为要使用的组件，对应alias中的key
+		 * 内部可直接使用 $、react变量，而无需再用导入：import $ from 'jquery'
+		*/
 		"global": {
 			"$": "jquery",
 			"react": "react"
@@ -65,7 +75,7 @@ npm install ykpm
 		 * 
 		 * 注意：适应某些特殊需要，类似g.js全局业务逻辑,需要标识“common”，入口文件涉及到g.js中重复module的，将不在重复打包
 		 *      不涉及g.js的，需要标识false
-		 */
+		*/
 		"files": [
 			"js/live.js",
 
@@ -185,9 +195,7 @@ npm install ykpm
 			]
 		}
     }
-  },
-
-
+  }
 
 ```
 
