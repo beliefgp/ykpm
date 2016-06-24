@@ -8,6 +8,11 @@
 
 npm install ykpm
 
+### 初始化配置
+```bash
+	ykpm init             # 初始化默认配置
+```
+
 ### 构建
 ```bash
 	ykpm build             # 打包config中的files中的所有入口文件

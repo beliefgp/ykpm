@@ -31,7 +31,7 @@ if (argv.version || argv.v) {
 // 获取命令及参数
 var [cmd, ...args] = optimist.argv._;
 
-if (['build', 'debug'].indexOf(cmd) < 0) {
+if (['build', 'debug', 'init'].indexOf(cmd) < 0) {
 	cmd && args.unshift(cmd);
 	cmd = 'build';
 }
