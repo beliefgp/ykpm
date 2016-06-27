@@ -4,7 +4,7 @@ exports.data = function (req) {
 
 		'data|1-10': [
 			{
-				'name|+3': 0
+				'name': module.Mock.Random.integer(10, 100)
 			}
 		]
 

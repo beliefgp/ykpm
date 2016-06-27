@@ -121,7 +121,7 @@ npm install ykpm
 			 * 
 			 * 需指明返回数据data：
 			 *   1. 支持mockjs数据格式
-			 *   2. 支持文件路径（如例4），该路径需指向一个文件，并导出一个data属性
+			 *   2. 支持文件路径（如例4），该路径需指向一个文件，并导出一个data属性(可使用module.Mock获取mock实例，调用Mock.Random等方法)
 			 * 		2.1 可直接返回ajax需要的值：exports.data = {a:1}，
 			 *      2.2 可为一个function：exports.data = function(req，res){return {a:1}};
 			 *          接收req，res两个http请求参数，return的值作为ajax的返回值
