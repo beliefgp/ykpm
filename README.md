@@ -41,6 +41,9 @@ npm install ykpm
 		"buildPath": "./build", //打包文件输出目录
 		"filesPath": "./src", //开发文件目录，决定了所有组件的根路径
 		"publicPath": "/dist/src/", //线上路径引用地址，也可是http地址(一般会在图片、字体打包时加入该路径)
+		"library": { //插件开发配置，key为插件变量名称，value为插件支持格式(具体可见webpack配置)
+			"ykpm": "umd"
+		},
 		"option": {
 			"cssExtract": true, //css文件抽离单独打包，默认false
 			"cssAutoprefixer": true, //自动添加css3属性前缀，默认true
