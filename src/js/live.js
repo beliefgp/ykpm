@@ -2,10 +2,11 @@
 
 import '../css/live.less';
 import Top from './g/top';
+import tpl from './a.tpl';
 
 class Live {
 	constructor() {
-		console.log(`22222==>${Top()}`);
+		console.log(tpl);
 
 		$.ajax({
 			type: 'get',

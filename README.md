@@ -49,7 +49,17 @@ npm install ykpm
 			"cssAutoprefixer": true, //自动添加css3属性前缀，默认true
 			"fileLimit": 10000 //文件压缩，小于10k的文件直接转换为base64位data数据，不在生成物理文件，默认false
 			"jsUglify": true, //js文件压缩，默认true
-			"commonExtractToLib": false //提取所有入口文件公共部分至lib基础库中，默认false
+			"commonExtractToLib": false, //提取所有入口文件公共部分至lib基础库中，默认false
+			"supportIE8": false //默认关闭，如涉及到Object.defineProperty等方法需兼容IE8，则开启
+		},
+		/**
+		 * 用户自定义loader
+		 * 可先通过ykpm install [loader] 安装相关解析器
+		 * key为文件后缀名，value为解析loader
+		 * 系统目前集成js、jsx、图片、文字、tpl相关解析，如需在此基础上增加loader，value前面加+：“less”:"+less2",否则覆盖默认设置
+		*/
+		"loader": {
+			".scss": "scss"
 		},
 		/**
 		 * 外部组件调用,如在html直接引用react组件，不经过打包，配置此项，内部使用：import react from 'react'
