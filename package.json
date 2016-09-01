@@ -1,6 +1,6 @@
 {
   "name": "ykpm",
-  "version": "2.2.20",
+  "version": "2.3.20",
   "description": "基于webpak封装的打包工具，集成打包、调试、代理、ajax劫持模拟数据",
   "keywords": [
     "打包",
@@ -41,8 +41,8 @@
     "iconv-lite": "^0.4.13",
     "imagemin-webpack-plugin": "^1.0.2",
     "less": "^2.7.1",
+    "less-loader": "^2.2.3",
     "mockjs": "^1.0.1-beta2",
-    "node-sass": "^3.7.0",
     "optimist": "^0.6.1",
     "postcss-loader": "^0.9.1",
     "precss": "^1.4.0",
