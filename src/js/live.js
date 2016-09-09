@@ -52,4 +52,4 @@ class Live {
 
 
 
-new Live();
+window.live = new Live();
