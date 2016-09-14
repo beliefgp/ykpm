@@ -62,8 +62,7 @@ ykpm install [loader]
             "cssAutoprefixer": true, //自动添加css3属性前缀，默认true
             "fileLimit": 10000 //文件压缩，小于10k的文件直接转换为base64位data数据，不在生成物理文件，默认false
             "jsUglify": true, //js文件压缩，默认true
-            "commonExtractToLib": false, //提取所有入口文件公共部分至lib基础库中，默认false
-            "supportIE8": false //默认关闭，如涉及到Object.defineProperty等方法需兼容IE8，则开启
+            "commonExtractToLib": false //提取所有入口文件公共部分至lib基础库中，默认false
         },
         /**
          * 用户自定义loader
