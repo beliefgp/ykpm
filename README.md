@@ -65,6 +65,15 @@ ykpm install [loader]
             "commonExtractToLib": false //提取所有入口文件公共部分至lib基础库中，默认false
         },
         /**
+         * babel 配置，默认值如下
+         *  
+         * 增加babel-preset等前缀，会在ykpm安装路径寻找模块，不增加则在当前项目目录下寻找模块
+        */
+        "babel": {
+            "presets": [ "babel-preset-es2015" ],
+            "plugins": [ "babel-plugin-transform-runtime" ]
+        },
+        /**
          * 用户自定义loader
          * 可先通过ykpm install [loader] 安装相关解析器
          * key为文件后缀名，value为解析loader
