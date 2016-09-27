@@ -1,6 +1,6 @@
 {
   "name": "ykpm",
-  "version": "2.3.27",
+  "version": "2.3.28",
   "description": "基于webpak封装的打包工具，集成打包、调试、代理、ajax劫持模拟数据",
   "keywords": [
     "打包",
@@ -50,7 +50,7 @@
     "style-loader": "^0.13.x",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
-    "webpack-dev-server": "^1.14.1",
+    "webpack-dev-server": "1.15.0",
     "wildcard-named": "0.0.1"
   },
   "devDependencies": {},
