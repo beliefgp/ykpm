@@ -28,9 +28,7 @@
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
-    "babel-plugin-transform-runtime": "^6.9.0",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
+    "babel-preset-es2015": "^6.16.0",
     "colors": "^1.1.2",
     "css-loader": "^0.23.1",
     "extract-text-webpack-plugin": "^1.0.1",
@@ -67,7 +65,9 @@
         "commonExtractToLib": false
       },
       "babel": {
-        "presets": [ "es2015-loose" ]
+        "presets": [
+          "es2015"
+        ]
       },
       "loader": {
         ".less": "+less"

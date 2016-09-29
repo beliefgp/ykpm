@@ -42,10 +42,13 @@ ykpm install [loader]
 
 #### 注意:
 
-调试开启热更新（"hot": true）并且使用代理的时候，需要把本地代理域名放入浏览器不代理的地址列表中，并在hosts中将当前域名指向本地IP。
+* 调试开启热更新（"hot": true）并且使用代理的时候，需要把本地代理域名放入浏览器不代理的地址列表中，并在hosts中将当前域名指向本地IP。
+  此问题是开启代理，node中捕获的url是带有域名的，非代理情况下，是不含域名的，此问题已和webpack-dev-server作者沟通过，不知后续是否能够改动(……o(╯□╰)o)。
 
-此问题是开启代理，node中捕获的url是带有域名的，非代理情况下，是不含域名的，此问题已和webpack-dev-server作者沟通过，不知后续是否能够改动(……o(╯□╰)o)。
-
+* 项目所需babel组件,默认集成babel-preset-es2015，如需其他，可在配置添加(会覆盖默认值)。
+  * 增加babel-preset、babel-plugins前缀，会在ykpm目录寻找插件，需使用ykpm install 安装。例如："presets": [ "babel-preset-es2015" ], ykpm install babel-preset-es2015
+  * 省略前缀，会在当前项目目录下寻找插件，使用npm install 安装即可。例如："presets": [ "es2015" ], npm install babel-preset-es2015.
+    (如使用es-2015-loose的话，目前必须使用无前缀配置，安装在当前项目下，主要是因为其中组件寻址逻辑问题。)
 ```js
 
 "ykpm": {
@@ -66,12 +69,17 @@ ykpm install [loader]
         },
         /**
          * babel 配置，默认值如下
-         *  
-         * 增加babel-preset等前缀，会在ykpm安装路径寻找模块，不增加则在当前项目目录下寻找模块
+         * 
         */
         "babel": {
-            "presets": [ "babel-preset-es2015" ],
-            "plugins": [ "babel-plugin-transform-runtime" ]
+            "presets": ["babel-preset-es2015"],
+            "plugins": [
+                ["transform-runtime", {
+                    "helpers": false, 
+                    "polyfill": false,
+                    "regenerator": true
+                }]
+            ]
         },
         /**
          * 用户自定义loader
