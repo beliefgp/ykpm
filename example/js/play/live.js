@@ -1,23 +1,24 @@
+
 'use strict';
 
-import '../css/live.less';
-import chat from './chat.js';
+import 'css/live.less';
+import * as Top from 'js/g/top';
+// import tpl from '../a.tpl';
 
 class Live {
 	constructor() {
-		chat();
-		
+		Top.Func1();
 		$.ajax({
 			type: 'get',
 			url: 'http://portal.zb.youku.com/liveportal/getTest1.action',
-			data: { testId: 1 },
+			data: { testId: 111 },
 			dataType: 'jsonp',
-			jsonp: 'callback',
+			jsonp: 'jsonpcallback',
 			success: function (ret) {
 				console.log(ret && ret.data);
 			}
 		});
-		
+
 		$.ajax({
 			type: 'get',
 			url: 'http://portal.zb.youku.com/liveportal/getTest4.action?ids=387',
@@ -42,13 +43,13 @@ class Live {
 	}
 
 	inintStatus() {
-		$('#aa').html('111');
+		$('.container').html('11111111');
 
 
 	}
 
 }
 
-Object.assign({}, { a: 1, b: 2 });
 
-new Live();
+
+window.live = new Live();

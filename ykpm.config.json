@@ -1,0 +1,73 @@
+{
+	"ykpm": {
+		"build": {
+			"buildPath": "./build",
+			"filesPath": "./example",
+			"publicPath": "/dist/example/",
+			"pluginOption": {
+				"cssExtract": true,
+				"cssAutoprefixer": true,
+				"jsUglify": false,
+				"fileToBase64Limit": false
+			},
+			"loaderOption": {
+				
+			},
+			"loaders": [{
+				"test": "\\.vue$",
+				"loader": "vue"
+			}],
+			"external": {
+
+			},
+			"alias": {
+				"jquery": "lib/jquery.min.js"
+			},
+			"global": {
+				"$": "jquery"
+			},
+			"files": [
+				"js/live/live.js"
+			]
+		},
+		"debug": {
+			"contentBase": "./static/",
+			"hostname": "local.youku.com",
+			"port": 3333,
+			"proxyFilter": {
+				"jscss": "(js|css)"
+			},
+			"proxy": {
+				"http://css.tudou.com/dist/src/": [
+					{
+						"path": "[all:path]/[alnum:file]_[digit:version].[jscss:extname]",
+						"target": "[path]/[file].[extname]"
+					},
+					{
+						"path": "/getJsVersion.action",
+						"data": {
+							"data|1-10": [
+								{
+									"id|+1": 1
+								}
+							]
+						}
+					}
+				],
+				"http://portal.zb.youku.com/liveportal/getTest4.action": {
+					"data": {
+						"data|1-10": [
+							{
+								"id|+2": 2
+							}
+						]
+					}
+				},
+				"http://portal.zb.youku.com/liveportal": {
+					"path": "getTest1.action",
+					"data": "./src/test/mock.js"
+				}
+			}
+		}
+	}
+}

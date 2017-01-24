@@ -1,12 +1,12 @@
 'use strict';
 
-import '../css/live.less';
-import Top from './g/top';
-import tpl from './a.tpl';
+import 'css/live.less';
+import * as Top from 'js/g/top';
+import tpl from '../a.tpl';
 
 class Live {
 	constructor() {
-		console.log(tpl);
+		console.log(tpl, Top.Func1(), Top.Func2());
 
 		$.ajax({
 			type: 'get',

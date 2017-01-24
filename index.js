@@ -1,7 +1,8 @@
 'use strict';
 
-var fs = require('fs');
-var optimist = require('optimist');
+const fs = require('fs');
+const path = require('path');
+const optimist = require('optimist');
 
 // 帮助信息
 optimist.usage([
@@ -12,7 +13,7 @@ optimist.usage([
 	'ykpm debug'
 ].join(''));
 
-var argv = optimist.argv;
+const argv = optimist.argv;
 
 // 帮助信息
 if (argv.help || argv.h) {
@@ -22,19 +23,33 @@ if (argv.help || argv.h) {
 
 // 版本信息
 if (argv.version || argv.v) {
-	var packageInfo = JSON.parse(fs.readFileSync(__dirname + '/package.json', 'utf-8'));
+	let packageInfo = JSON.parse(fs.readFileSync(__dirname + '/package.json', 'utf-8'));
 	console.log(packageInfo.version);
 	process.exit();
 }
 
 // 获取命令及参数
-var [cmd, ...args] = optimist.argv._;
+let [cmd, ...args] = optimist.argv._;
 
-if (['build', 'debug', 'init', 'install', 'uninstall'].indexOf(cmd) < 0) {
+if (['build', 'debug'].indexOf(cmd) < 0) {
 	cmd && args.unshift(cmd);
 	cmd = 'build';
 }
 
-var Task = require(__dirname + '/lib/' + cmd);
+let root = process.cwd();
+let config = null;
 
-Task.run(process.cwd(), args, argv);
+[argv.config, './ykpm.config.js', './ykpm.config.json', './package.json'].some(configPath => {
+	return fs.existsSync(configPath) && (config = require(path.resolve(root, configPath)));
+});
+
+if (config === null) {
+	console.log('not found config');
+	process.exit();
+}
+
+let ykpmConfig = config.ykpm || {};
+
+ykpmConfig.root = root;
+
+require(__dirname + `/lib/${cmd}Cmd`).run(ykpmConfig, args);
